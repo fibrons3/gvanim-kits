@@ -4,9 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>מקרבים בין העולמות</title>
-<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
-.rights{margin-top:10px;font-size:13px;line-height:1.5}
-</style>
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Assistant:wght@400;600;700&display=swap">
@@ -104,6 +102,20 @@ footer{margin-top:40px;font-size:14px;color:var(--muted);border-top:1px solid va
 .feedback h3{margin:0;font-family:var(--display);font-size:22px}
 .feedback p{margin:0;color:var(--muted)}
 .feedback a.btn{justify-self:start;text-decoration:none}
+
+.rights{margin-top:10px;font-size:13px;line-height:1.5}
+
+.howto{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0}
+.howto summary{cursor:pointer;padding:12px 16px;font-weight:700;color:var(--plum);list-style:none;display:flex;align-items:center;gap:8px}
+.howto summary::-webkit-details-marker{display:none}
+.howto summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--plum-soft);font-size:16px;line-height:1}
+.howto[open] summary::before{content:"−"}
+.howto ol{margin:0;padding:0 16px 14px;padding-inline-start:36px;display:grid;gap:6px;font-size:16px}
+.howto summary:focus-visible{outline:3px solid var(--plum);outline-offset:2px;border-radius:12px}
+#tqList h3{margin:26px 0 4px;color:var(--plum)}
+#tqList .field label{font-weight:600}
+#tqList textarea{min-height:64px}
+.tqcount{font-size:14px;color:var(--muted)}
 </style>
 
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
@@ -125,12 +137,20 @@ footer{margin-top:40px;font-size:14px;color:var(--muted);border-top:1px solid va
       <button type="button" data-sg="m" aria-pressed="false">אני כותב</button>
     </div>
   </div>
+<details class="howto"><summary>איך משתמשים בערכה?</summary><ol>
+<li>בוחרים למעלה לשון פנייה: לשני המינים, "אני כותבת" או "אני כותב". כל הניסוחים בערכה מתחלפים בהתאם.</li>
+<li>עוברים בין הלשוניות בכל סדר ובכל קצב. כל לשונית היא כלי אחד מהמפגש.</li>
+<li>לוחצים על הצעות או כותבים במילים שלכם. המשפט המסכם נבנה לבד, ואפשר להעתיק אותו לווטסאפ או לפתקים בטלפון.</li>
+<li>בלשונית האחרונה, "שאלות להתבוננות", נמצאות שאלות הדיון מהמפגש, עם מקום לכתוב תשובות.</li>
+<li>מה שכותבים נשמר רק בטלפון או במחשב הזה, ולא נשלח לשום מקום. לפני שעוברים למכשיר אחר, כדאי להעתיק את מה שכתבתם.</li>
+</ol></details>
 </header>
 
 <nav><div class="tabs" role="tablist">
   <button role="tab" id="tab-t1" aria-selected="true" data-tab="t1">לתרגם את מה שלא רואים</button>
   <button role="tab" id="tab-t2" aria-selected="false" data-tab="t2">ההסכם המשפחתי</button>
   <button role="tab" id="tab-t3" aria-selected="false" data-tab="t3">אדם אחד, שיחה אחת</button>
+  <button role="tab" aria-selected="false" data-tab="tq">שאלות להתבוננות</button>
 </div></nav>
 
 <!-- TAB 1 -->
@@ -224,6 +244,13 @@ footer{margin-top:40px;font-size:14px;color:var(--muted);border-top:1px solid va
   <p class="intro" data-g="סמנ{י|ו} כל פעם ששמת{|} לב. זה לא מבחן, רק מודעות."></p>
   <div class="checks" id="checks"></div>
   <p class="take" data-g="כדי שיראו אותי, אני לא חייב{ת|} להפסיק לראות את האדם שמולי."></p>
+</section>
+
+<section class="panel" id="tq" role="tabpanel" hidden>
+  <h2>שאלות להתבוננות</h2>
+  <p class="intro">אלה השאלות שעלו בדיון במפגש. אין תשובות נכונות, ואין חובה לענות על כולן. אפשר לבחור שאלה אחת שמדברת אליכם, לחזור אליה במהלך השבוע ולכתוב מה שעולה.</p>
+  <div id="tqList"></div>
+  <div class="btnrow" style="margin-top:18px"><button class="btn" type="button" id="tqCopy">העתקת התשובות שלי</button><span class="tqcount" id="tqCount"></span><span class="toast" aria-live="polite"></span></div>
 </section>
 
 <section class="feedback">
@@ -386,6 +413,52 @@ const h=(location.hash||'').slice(1); showTab(['t1','t2','t3'].includes(h)?h:'t1
 renderAll();
 })();
 </script>
+<script>
+(function(){
+const KEY="gvanim-kit-2-q", Q=[["פתיחה · מי באמת מבין אותי?", ["מי האדם בחיים שלכם שהכי מבין מה עובר עליכם?", "מה הוא עושה שגורם לכם להרגיש מובנים?", "איפה אתם מרגישים שלא מבינים אתכם?", "מה גורם לי להרגיש שרואים אותי, ומה גורם לי להרגיש לבד בתוך ההתמודדות?"]], ["חלק 1 · להסביר את מה שאי אפשר לראות", ["מה הדבר שהכי קשה לכם להסביר לאנשים הקרובים אליכם?", "מה הייתם רוצים שהם יבינו, שהם היום לא מבינים?", "מה קורה לכם כשהם לא מבינים?"]], ["חלק 2 · ציפיות שלא עודכנו", ["איזו ציפייה בבית נשארה כפי שהייתה, למרות שהמציאות שלכם השתנתה?", "איזה תפקיד אתם עדיין מנסים להחזיק רק כי \"תמיד אני עשיתי אותו\"?"]], ["חלק 3 · לבקש עזרה בלי להרגיש נטל", ["מה הכי קשה לכם לבקש?", "ממי הכי קשה לכם לבקש?", "מה אתם מספרים לעצמכם עליכם כשאתם צריכים עזרה?"]], ["חלק 4 · גבולות בלי אשמה", ["איפה אתם אומרים כן כשהגוף שלכם אומר לא?", "ממה אתם חוששים אם תגידו לא?"]], ["חלק 5 · גם לצד השני יש מציאות", ["מה לדעתכם השתנה עבור האנשים הקרובים אליכם?", "האם שאלתם אותם פעם איך המציאות הזאת פוגשת אותם?", "מה יכול לקרות לשיחה אם במקום רק להסביר, גם נשאל?"]], ["חלק 6 · לא להפוך את הפיברו למערכת היחסים", ["כמה מקום הפיברו תופסת היום בשיחות ובמערכות היחסים שלכם?", "מה היה בקשר לפני כן שאתם מתגעגעים אליו?", "מה ממנו עדיין אפשר ליצור היום, אולי בצורה אחרת?"]]];
+const $=id=>document.getElementById(id);
+const st=(()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}})();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const sg=()=>{const b=document.querySelector('[data-sg][aria-pressed="true"]');return b?b.dataset.sg:'b';};
+const pick=(f,ma)=>{const m=sg();if(m==='f')return f;if(m==='m')return ma;if(f===ma)return f;
+  if((f==='י'&&ma==='ו')||(f==='ך'&&ma==='כם'))return ma;
+  if(f==='')return ma?'/'+ma:'';if(ma==='')return '/'+f;
+  const fin={'ך':'כ','ם':'מ','ן':'נ','ף':'פ','ץ':'צ'};const m0=ma.slice(0,-1)+(fin[ma.slice(-1)]||ma.slice(-1));
+  for(const suf of ['ית','ת','ה'])if(f===m0+suf)return ma+'/'+suf;
+  return ma+'/'+f;};
+const g=s=>s.replace(/\{([^|{}]*)\|([^{}]*)\}/g,(m,f,ma)=>pick(f,ma)).replace(/[כמנפצ](?![א-ת])/g,c=>({'כ':'ך','מ':'ם','נ':'ן','פ':'ף','צ':'ץ'}[c]));
+const list=$('tqList');
+Q.forEach((s,si)=>{
+  const h=document.createElement('h3');h.dataset.tq=s[0];list.appendChild(h);
+  s[1].forEach((q,qi)=>{
+    const id='tq-'+si+'-'+qi,f=document.createElement('div');f.className='field';
+    const l=document.createElement('label');l.htmlFor=id;l.dataset.tq=q;
+    const t=document.createElement('textarea');t.id=id;t.value=st[id]||'';
+    f.appendChild(l);f.appendChild(t);list.appendChild(f);
+  });
+});
+function labels(){list.querySelectorAll('[data-tq]').forEach(e=>e.textContent=g(e.dataset.tq));count();}
+function count(){const n=Object.values(st).filter(v=>v&&v.trim()).length;$('tqCount').textContent=n===1?'נכתבה תשובה לשאלה אחת':n?('נכתבו תשובות ל-'+n+' שאלות'):'';}
+list.addEventListener('input',e=>{if(e.target.tagName==='TEXTAREA'){st[e.target.id]=e.target.value;save();count();}});
+$('tqCopy').addEventListener('click',e=>{
+  const out=[];Q.forEach((s,si)=>{const rows=[];s[1].forEach((q,qi)=>{const a=(st['tq-'+si+'-'+qi]||'').trim();if(a)rows.push(g(q)+'\n'+a);});
+    if(rows.length)out.push(g(s[0])+'\n\n'+rows.join('\n\n'));});
+  const txt=out.length?'שאלות להתבוננות\n\n'+out.join('\n\n— — —\n\n'):'';
+  const t=e.target.parentElement.querySelector('.toast');
+  if(!txt){t.textContent='עוד לא נכתבו תשובות';setTimeout(()=>t.textContent='',1800);return;}
+  const ok=()=>{t.textContent='הועתק';setTimeout(()=>t.textContent='',1800)};
+  const fb=()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(x){}ta.remove();};
+  try{navigator.clipboard.writeText(txt).then(ok,fb)}catch(x){fb()}
+});
+document.addEventListener('click',e=>{
+  if(e.target.closest('[data-sg]'))setTimeout(labels,0);
+  const b=e.target.closest('[data-tab]');if(b)$('tq').hidden=b.dataset.tab!=='tq';
+});
+labels();
+if((location.hash||'').slice(1)==='tq'){const b=document.querySelector('[data-tab="tq"]');if(b)b.click();}
+})();
+</script>
+
 
 </body>
 </html>

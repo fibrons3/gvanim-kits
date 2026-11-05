@@ -104,6 +104,18 @@ footer{margin-top:40px;font-size:14px;color:var(--muted);border-top:1px solid va
 .feedback a.btn{justify-self:start;text-decoration:none}
 
 .rights{margin-top:10px;font-size:13px;line-height:1.5}
+
+.howto{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0}
+.howto summary{cursor:pointer;padding:12px 16px;font-weight:700;color:var(--plum);list-style:none;display:flex;align-items:center;gap:8px}
+.howto summary::-webkit-details-marker{display:none}
+.howto summary::before{content:"+";display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--plum-soft);font-size:16px;line-height:1}
+.howto[open] summary::before{content:"−"}
+.howto ol{margin:0;padding:0 16px 14px;padding-inline-start:36px;display:grid;gap:6px;font-size:16px}
+.howto summary:focus-visible{outline:3px solid var(--plum);outline-offset:2px;border-radius:12px}
+#tqList h3{margin:26px 0 4px;color:var(--plum)}
+#tqList .field label{font-weight:600}
+#tqList textarea{min-height:64px}
+.tqcount{font-size:14px;color:var(--muted)}
 </style>
 <style>
 .flow{display:grid;gap:10px;margin-top:6px}
@@ -148,6 +160,13 @@ footer{margin-top:40px;font-size:14px;color:var(--muted);border-top:1px solid va
       <button type="button" data-sg="m" aria-pressed="false">אני כותב</button>
     </div>
   </div>
+<details class="howto"><summary>איך משתמשים בערכה?</summary><ol>
+<li>בוחרים למעלה לשון פנייה: לשני המינים, "אני כותבת" או "אני כותב". כל הניסוחים בערכה מתחלפים בהתאם.</li>
+<li>עוברים בין הלשוניות בכל סדר ובכל קצב. כל לשונית היא כלי אחד מהמפגש.</li>
+<li>לוחצים על הצעות או כותבים במילים שלכם. המשפט המסכם נבנה לבד, ואפשר להעתיק אותו לווטסאפ או לפתקים בטלפון.</li>
+<li>בלשונית האחרונה, "שאלות להתבוננות", נמצאות שאלות הדיון מהמפגש, עם מקום לכתוב תשובות.</li>
+<li>מה שכותבים נשמר רק בטלפון או במחשב הזה, ולא נשלח לשום מקום. לפני שעוברים למכשיר אחר, כדאי להעתיק את מה שכתבתם.</li>
+</ol></details>
 </header>
 
 <nav><div class="tabs" role="tablist">
@@ -157,6 +176,7 @@ footer{margin-top:40px;font-size:14px;color:var(--muted);border-top:1px solid va
   <button role="tab" aria-selected="false" data-tab="t4">מערכות</button>
   <button role="tab" aria-selected="false" data-tab="t5">האנרגיה שלי</button>
   <button role="tab" aria-selected="false" data-tab="t6">צעד אחד</button>
+  <button role="tab" aria-selected="false" data-tab="tq">שאלות להתבוננות</button>
 </div></nav>
 
 <!-- TAB 1 -->
@@ -323,6 +343,13 @@ footer{margin-top:40px;font-size:14px;color:var(--muted);border-top:1px solid va
   <h3>לשים לב השבוע</h3>
   <div class="checks" id="checks"></div>
   <p class="take" data-g="המציאות שלי השתנתה. האפשרות שלי ליצור בתוכה לא נעלמה."></p>
+</section>
+
+<section class="panel" id="tq" role="tabpanel" hidden>
+  <h2>שאלות להתבוננות</h2>
+  <p class="intro">אלה השאלות שעלו בדיון במפגש. אין תשובות נכונות, ואין חובה לענות על כולן. אפשר לבחור שאלה אחת שמדברת אליכם, לחזור אליה במהלך השבוע ולכתוב מה שעולה.</p>
+  <div id="tqList"></div>
+  <div class="btnrow" style="margin-top:18px"><button class="btn" type="button" id="tqCopy">העתקת התשובות שלי</button><span class="tqcount" id="tqCount"></span><span class="toast" aria-live="polite"></span></div>
 </section>
 
 <section class="feedback">
@@ -507,6 +534,52 @@ const h=(location.hash||'').slice(1);showTab(TABS.includes(h)?h:'t1');
 renderAll();
 })();
 </script>
+<script>
+(function(){
+const KEY="gvanim-kit-3-q", Q=[["פתיחה · האם העולם עדיין מחכה לי?", ["מאז שהפיברו הפכה לחלק מהחיים שלכם, האם העולם שלכם התרחב או הצטמצם?", "מה הדבר הראשון שצמצמתם בחיים שלכם מחוץ לבית?", "מה הייתם הכי רוצים להחזיר לחיים שלכם, גם אם בדרך אחרת?", "האם יש מקום שבו אתם מרגישים שהסביבה התרחקה מכם, ואולי גם אתם התרחקתם ממנה?"]], ["חלק 1 · מה יחשבו עליי?", ["מה אתם הכי חוששים שאנשים חושבים עליכם?", "האם מישהו באמת אמר לכם את זה, או שזה סיפור שאתם מספרים לעצמכם?", "על איזו בחירה ויתרתם בגלל החשש הזה?", "מה יכול להשתנות אם נפריד בין התחושה שלנו לבין המסקנה שלנו על האדם שמולנו?"]], ["חלק 2 · העבודה, הפרנסה והתחושה שיש לי מקום", ["מה העבודה או העשייה המקצועית נתנו לכם מעבר לפרנסה?", "מה הכי חסר לכם מהעולם הזה היום?", "איזו יכולת, איכות או תרומה עדיין קיימת בכם, גם אם הדרך להביא אותה השתנתה?", "האם יש משהו שאתם יכולים להציע למקום העבודה, במקום משהו שכבר אינכם יכולים לבצע באותה דרך?", "האם אני עסוק{ה|} רק במה שמקום העבודה לא מאפשר לי, או שאני בודק{ת|} גם מה אני יכול{ה|} להמשיך לתרום, ובאיזו דרך?"]], ["חלק 3 · חברויות, חברה ותחושת שייכות", ["איזה קשר חברתי הכי חסר לכם היום?", "האם יש מישהו שהייתם רוצים להתקרב אליו מחדש?", "האם האנשים האלה יודעים שאתם עדיין רוצים בקשר?", "מה אתם מצפים מהחברים שלכם, ומה אתם יכולים להביא לקשר הזה?", "מה אני עושה כדי לשמור על הקשר? האם אני יוזמ{ת|} שיחה, מתעניינ{ת|} במה שעובר על החבר או החברה, ומציע{ה|} מפגש שמתאים ליכולת שלי?"]], ["חלק 4 · מול מערכות ומוסדות", ["מול איזו מערכת אתם מרגישים הכי חסרי אונים?", "מה בדרך כלל קורה לכם במפגש הזה?", "האם אתם יודעים להבחין בין מה שאתם מבקשים לבין מה שאתם זכאים לו?", "מה יכול לעזור לכם להגיע מוכנים וברורים יותר?"]], ["חלק 5 · האנרגיה שלי והבחירה היכן להשקיע אותה", ["על מה אתם מוציאים אנרגיה רק כי אתם מרגישים שחייבים?", "איזה דבר חשוב לכם באמת, אבל כבר לא נשארת לכם אנרגיה עבורו?", "האם יש התחייבות שאתם יכולים לקיים בדרך אחרת? להודיע מוקדם, להציע חלופה, לחלק את המשימה או לשנות את המועד?", "מה הייתם רוצים להפסיק לעשות, כדי לפנות מקום למשהו משמעותי יותר?"]], ["חלק 6 · ליצור לעצמי מקום בעולם", ["מה אתם מרגישים שיש לכם לתת לעולם?", "איזה חלק בכם לא מקבל היום מספיק מקום?", "האם יש משהו שאתם מחכים שהעולם יאפשר לכם, ושאולי תוכלו להתחיל ליזום בעצמכם?", "אם הייתם יכולים ליצור לעצמכם מקום אחד חדש בעולם, מה הייתם רוצים שיהיה בו?"]]];
+const $=id=>document.getElementById(id);
+const st=(()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}})();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const sg=()=>{const b=document.querySelector('[data-sg][aria-pressed="true"]');return b?b.dataset.sg:'b';};
+const pick=(f,ma)=>{const m=sg();if(m==='f')return f;if(m==='m')return ma;if(f===ma)return f;
+  if((f==='י'&&ma==='ו')||(f==='ך'&&ma==='כם'))return ma;
+  if(f==='')return ma?'/'+ma:'';if(ma==='')return '/'+f;
+  const fin={'ך':'כ','ם':'מ','ן':'נ','ף':'פ','ץ':'צ'};const m0=ma.slice(0,-1)+(fin[ma.slice(-1)]||ma.slice(-1));
+  for(const suf of ['ית','ת','ה'])if(f===m0+suf)return ma+'/'+suf;
+  return ma+'/'+f;};
+const g=s=>s.replace(/\{([^|{}]*)\|([^{}]*)\}/g,(m,f,ma)=>pick(f,ma)).replace(/[כמנפצ](?![א-ת])/g,c=>({'כ':'ך','מ':'ם','נ':'ן','פ':'ף','צ':'ץ'}[c]));
+const list=$('tqList');
+Q.forEach((s,si)=>{
+  const h=document.createElement('h3');h.dataset.tq=s[0];list.appendChild(h);
+  s[1].forEach((q,qi)=>{
+    const id='tq-'+si+'-'+qi,f=document.createElement('div');f.className='field';
+    const l=document.createElement('label');l.htmlFor=id;l.dataset.tq=q;
+    const t=document.createElement('textarea');t.id=id;t.value=st[id]||'';
+    f.appendChild(l);f.appendChild(t);list.appendChild(f);
+  });
+});
+function labels(){list.querySelectorAll('[data-tq]').forEach(e=>e.textContent=g(e.dataset.tq));count();}
+function count(){const n=Object.values(st).filter(v=>v&&v.trim()).length;$('tqCount').textContent=n===1?'נכתבה תשובה לשאלה אחת':n?('נכתבו תשובות ל-'+n+' שאלות'):'';}
+list.addEventListener('input',e=>{if(e.target.tagName==='TEXTAREA'){st[e.target.id]=e.target.value;save();count();}});
+$('tqCopy').addEventListener('click',e=>{
+  const out=[];Q.forEach((s,si)=>{const rows=[];s[1].forEach((q,qi)=>{const a=(st['tq-'+si+'-'+qi]||'').trim();if(a)rows.push(g(q)+'\n'+a);});
+    if(rows.length)out.push(g(s[0])+'\n\n'+rows.join('\n\n'));});
+  const txt=out.length?'שאלות להתבוננות\n\n'+out.join('\n\n— — —\n\n'):'';
+  const t=e.target.parentElement.querySelector('.toast');
+  if(!txt){t.textContent='עוד לא נכתבו תשובות';setTimeout(()=>t.textContent='',1800);return;}
+  const ok=()=>{t.textContent='הועתק';setTimeout(()=>t.textContent='',1800)};
+  const fb=()=>{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(x){}ta.remove();};
+  try{navigator.clipboard.writeText(txt).then(ok,fb)}catch(x){fb()}
+});
+document.addEventListener('click',e=>{
+  if(e.target.closest('[data-sg]'))setTimeout(labels,0);
+  const b=e.target.closest('[data-tab]');if(b)$('tq').hidden=b.dataset.tab!=='tq';
+});
+labels();
+if((location.hash||'').slice(1)==='tq'){const b=document.querySelector('[data-tab="tq"]');if(b)b.click();}
+})();
+</script>
+
 
 </body>
 </html>
