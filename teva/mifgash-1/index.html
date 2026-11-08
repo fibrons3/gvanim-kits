@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>כמו הטבע · אחרי מפגש הפתיחה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* דף טלפון בהיר ושקט: נייר לילכי, ירוק מרווה, סגול העמותה כהדגשה */
+  --bg:#f6f3f8; --card:#ffffff; --text:#262229; --muted:#6b6470; --line:#e2dbe8; --accent:#6a2c9e; --sage:#5d7a52;
+  --display:"Frank Ruhl Libre","David Libre",Georgia,serif; --body:"Assistant","Segoe UI",Arial,sans-serif;
+  --earth:#a7773f; --water:#2f86a0; --air:#6f86a0; --fire:#c9582a; --wood:#5f8a3a; --metal:#7c838b;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#19171c;--card:#232027;--text:#efebf2;--muted:#b0a8b6;--line:#38323e;--accent:#c9a6ee;--sage:#a5c296;--earth:#d2a36c;--water:#6cbcd4;--air:#a9bdd3;--fire:#ef8a5c;--wood:#9cc477;--metal:#b9bfc6;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#19171c;--card:#232027;--text:#efebf2;--muted:#b0a8b6;--line:#38323e;--accent:#c9a6ee;--sage:#a5c296;--earth:#d2a36c;--water:#6cbcd4;--air:#a9bdd3;--fire:#ef8a5c;--wood:#9cc477;--metal:#b9bfc6;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:18px;line-height:1.65}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.25;margin:0;text-wrap:balance}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hero{position:relative;min-height:340px;display:flex;align-items:flex-end;background:#333 url('/teva/mifgash-1/img/s14.jpg') center/cover}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,18,22,.88),rgba(20,18,22,.15) 70%)}
+.hero .in{position:relative;padding:28px 20px 26px;max-width:760px;margin:0 auto;width:100%;color:#f5f1ea}
+.kick{font-size:15px;font-weight:700;color:#d9c3f2}
+.hero h1{font-size:clamp(32px,8vw,48px);margin:4px 0 8px}
+.hero p{margin:0;max-width:52ch}
+main{max-width:760px;margin:0 auto;padding:8px 16px 40px;display:grid;gap:22px}
+section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;display:grid;gap:14px}
+section > h2{font-size:26px}
+.sub{color:var(--muted);margin:0}
+ol.recap{margin:0;padding-inline-start:22px;display:grid;gap:8px}
+ol.recap b{color:var(--accent)}
+.els{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:520px){.els{grid-template-columns:repeat(2,1fr)}}
+.el{position:relative;border:3px solid transparent;border-radius:14px;overflow:hidden;padding:0;background:#000;aspect-ratio:4/3;text-align:start}
+.el img{width:100%;height:100%;object-fit:cover;display:block;opacity:.88}
+.el span{position:absolute;inset:auto 0 0 0;padding:6px 10px;background:linear-gradient(to top,rgba(0,0,0,.85),transparent);color:#fff;font-family:var(--display);font-size:20px;line-height:1.2}
+.el span small{display:block;font-family:var(--body);font-size:13px;opacity:.9}
+.el[aria-pressed="true"]{border-color:var(--c)}
+.el[aria-pressed="true"]::after{content:"✓";position:absolute;top:6px;inset-inline-end:8px;background:var(--c);color:#fff;border-radius:50%;width:26px;height:26px;display:grid;place-items:center;font-size:15px;font-weight:700}
+.detail{border-inline-start:5px solid var(--c,var(--accent));padding:4px 16px;display:grid;gap:10px}
+.detail h3{font-size:30px;color:var(--c)}
+.detail h3 small{font-size:18px;color:var(--text);margin-inline-start:8px}
+.detail p{margin:0}
+.q{font-family:var(--display);font-size:22px;color:var(--text);background:color-mix(in srgb,var(--c) 12%,transparent);border-radius:12px;padding:12px 14px}
+details{border:1px solid var(--line);border-radius:12px;padding:2px 14px}
+summary{cursor:pointer;font-weight:700;padding:8px 0;color:var(--muted)}
+dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0 0 12px}
+dt{color:var(--muted)}
+dd{margin:0}
+.small{font-size:15px;color:var(--muted)}
+.prac{display:grid;gap:16px}
+.pblock{display:grid;gap:10px;border-inline-start:4px solid var(--c);padding-inline-start:14px}
+.pblock h3{font-size:24px;color:var(--c)}
+.pblock h3 small{font-size:16px;color:var(--muted)}
+.step{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.step i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--c,var(--accent));color:#fff;display:grid;place-items:center;font-weight:700}
+label{font-weight:700;display:block;margin-bottom:4px}
+input[type=text],textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+textarea{min-height:90px;resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{background:var(--accent);color:#fff;border:0;border-radius:12px;padding:10px 18px;font-weight:700}
+:root[data-theme="dark"] .btn{color:#19171c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn{color:#19171c}}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);font-weight:600}
+.chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:4px 12px;font-size:15px}
+.chip[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#fff}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.days button{aspect-ratio:1;border-radius:12px;border:1px solid var(--line);background:var(--bg);font-weight:700;font-size:15px;display:grid;place-items:center;padding:0}
+.days button[aria-pressed="true"]{background:var(--c,var(--sage));border-color:var(--c,var(--sage));color:#fff}
+.log{display:grid;gap:10px;list-style:none;margin:0;padding:0}
+.log li{border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:grid;gap:4px}
+.log .meta{display:flex;justify-content:space-between;gap:8px;font-size:14px;color:var(--muted)}
+.log .meta button{background:none;border:0;color:var(--muted);text-decoration:underline;padding:0}
+.priv{background:color-mix(in srgb,var(--sage) 14%,transparent);border-radius:12px;padding:10px 14px;font-size:15px}
+.closing{text-align:center;background:transparent;border:0}
+.closing .big{font-family:var(--display);font-size:clamp(24px,6vw,32px);line-height:1.4;margin:0}
+.disc{max-width:640px;margin:0 auto 14px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:var(--card);text-align:start;line-height:1.6}
+footer{text-align:center;font-size:14px;color:var(--muted);padding:0 16px 28px}
+</style>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<header class="hero">
+  <div class="in">
+    <div class="kick">מקום לרגע · כמו הטבע</div>
+    <h1>מה לוקחים איתנו מהמפגש הראשון</h1>
+    <p>סיכום קצר של מה שעברנו יחד, וכמה הזמנות קטנות להמשיך את הדרך עד שניפגש שוב. הכול בקצב שמתאים לך, והכול לבחירה.</p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2>מה עשינו יחד</h2>
+    <ol class="recap">
+      <li><b>הגענו.</b> נתנו לעצמנו רגע לנחות, בלי צורך להגיע עם סיפור מסודר.</li>
+      <li><b>בנינו מרחב משותף.</b> מותר לשתף ומותר לשתוק, מקשיבים בלי שיפוט, שומרים על פרטיות ונותנים מקום לצורכי הגוף.</li>
+      <li><b>בחרנו אבן.</b> כל אחד ואחת הפכו אבן ופגשו מילה. המילה הזאת נשארת איתנו.</li>
+      <li><b>פגשנו את הטבע שהיה כאן לפנינו.</b> אדמה ומים, הרים ורוחות, תנועה, עצירה והתחדשות.</li>
+      <li><b>הכרנו שישה אלמנטים</b> והתבוננו במה שכל אחד מהם מעורר בנו.</li>
+      <li><b>שאלנו מה פגש אותי.</b> איזה אלמנט הדהד, ואם נוצר חיבור למילה שעל האבן.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>ששת האלמנטים</h2>
+    <p class="sub"><b style="color:var(--text)">לחצו על אלמנט להסבר ולבחירה.</b> אפשר לבחור אלמנט אחד או כמה, כל מה שהדהד. לפי הבחירה יופיעו למטה ההזמנות לשבוע.</p>
+    <div class="els" id="els"></div>
+    <div class="detail" id="detail"></div>
+  </section>
+
+  <section id="mine">
+    <h2>המסע האישי שלי עד המפגש הבא</h2>
+    <div>
+      <label for="stone">המילה שעל האבן שלי</label>
+      <input type="text" id="stone" maxlength="40" placeholder="לכתוב כאן את המילה, אם רוצים">
+    </div>
+    <div class="prac" id="prac"></div>
+    <div>
+      <label>רגעים קטנים שהתאפשרו השבוע</label>
+      <p class="small" style="margin:0 0 8px">לסמן יום שבו היה רגע קטן של התבוננות. גם יום בלי סימון הוא חלק מהדרך.</p>
+      <div class="days" id="days"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>יומן רגעים בטבע</h2>
+    <p class="sub">אור בחלון, עץ בדרך, תנועה של עננים, עציץ בבית. מה ראיתי, ומה זה עורר בי?</p>
+    <div>
+      <label for="logIn">רגע שרציתי לזכור</label>
+      <textarea id="logIn" placeholder="לדוגמה: בבוקר ראיתי את העלים זזים ברוח. הרגשתי שגם לי מותר לזוז לאט."></textarea>
+    </div>
+    <div class="row" id="logEls" aria-label="אלמנט קשור (לבחירה)"></div>
+    <div class="row"><button class="btn" id="logAdd" type="button">שמירה ביומן</button><span class="small" id="logOk"></span></div>
+    <ul class="log" id="log"></ul>
+    <div class="priv">מה שנכתב בדף הזה נשמר רק בטלפון או במחשב שבו כתבת, ולא נשלח לאף אחד. אין צורך להביא תשובות למפגש.</div>
+  </section>
+
+  <section class="closing">
+    <p class="big">לא חייבים לדעת לאן כל הדרך מובילה.<br>מספיק למצוא את הצעד שמתאים לי עכשיו.</p>
+  </section>
+</main>
+<footer><p class="disc">התוכן נועד להתבוננות אישית ולהשראה בלבד. הוא אינו מהווה ייעוץ, אבחון או טיפול רפואי, ואינו מחליף מידע רפואי או התייעצות עם רופא/ה או איש/אשת מקצוע בתחום הבריאות. בכל שאלה הנוגעת לבריאות יש לפנות לגורם רפואי מוסמך.</p>© כל הזכויות שמורות לעמותת גוונים של סגול, 2026</footer>
+
+<script>
+const EL=[
+ {id:"earth",name:"אדמה",sub:"מקום וביטחון",img:"/teva/mifgash-1/img/s6.jpg",c:"var(--earth)",
+  text:"היסוד של החומר והגוף הפיזי. האדמה היא הקרקע שמתחתינו: מקום להניח בו את עצמנו, משהו שמחזיק, תחושה של בית. יש ימים של יציבות, ויש ימים שבהם נדמה שהקרקע נשמטת.",
+  q:"מה בחיים שלי נותן לי תחושת קרקע?",
+  lore:[["עונה","סוף הקיץ"],["רגש","דאגה ומחשבה שחוזרת על עצמה"],["איברים","הטחול והקיבה"],["חוש","הפה וחוש הטעם"]],
+  prac:["פעם ביום לשים לב לנקודה אחת שמחזיקה אותי: הכיסא, הרצפה מתחת לרגליים, אדם קרוב או הרגל קטן.","כשמתאפשר, לגעת באדמה, באבן או בעציץ, ולשים לב איך זה מרגיש.","כשהמחשבות רצות, לשאול: מה נמצא כאן, עכשיו?"]},
+ {id:"water",name:"מים",sub:"רגש והסתגלות",img:"/teva/mifgash-1/img/s7.jpg",c:"var(--water)",
+  text:"היסוד של הרגשות. מים יכולים להיות שקטים, זורמים או סוערים, והם מקבלים את צורת הכלי שמחזיק אותם. במסורת הסינית המים הם החורף: זמן של עצירה ואגירת כוחות.",
+  q:"איזה רגש מבקש ממני מקום היום?",
+  lore:[["עונה","חורף"],["רגש","פחד, ולצדו כוח רצון"],["איברים","הכליות ושלפוחית השתן"],["חוש","האוזניים"]],
+  prac:["פעם ביום לשאול: איך מזג האוויר הרגשי שלי עכשיו? שקט, זורם או סוער? אין תשובה נכונה.","לשים לב למים ביום: כוס תה חמה, מקלחת, גשם.","לשאול כמו מאגר בחורף: מה שומר על הכוחות שלי, ומה מרוקן אותם?"]},
+ {id:"air",name:"אוויר",sub:"מרחב ומילים",img:"/teva/mifgash-1/img/s8.jpg",c:"var(--air)",
+  text:"היסוד של התקשורת, החשיבה והידע. את האוויר לא רואים, אבל מרגישים את התנועה שהוא יוצר. כשאומרים ״צריך קצת אוויר״, לפעמים הכוונה להפסקה, למרחק או לזמן לעצמנו.",
+  q:"איפה הייתי רוצה שיהיה לי קצת יותר מרחב?",
+  lore:[["אצל אריסטו","חם ולח, נמשך למעלה"],["במסורת הסינית","אין יסוד של אוויר; הנשימה והריאות שייכות למתכת"]],
+  prac:["להסתכל על עלים, עננים או וילון שזז ברוח, ולתת לעיניים לנוח עליהם רגע.","לשים לב לרגע אחד שבו היה לי מרחב, או שהמרחב היה חסר.","אם יש משהו שמעסיק אותי, אפשר ״לתת לו אוויר״: לכתוב אותו ביומן או לומר אותו למישהו קרוב."]},
+ {id:"fire",name:"אש",sub:"חום ורצון",img:"/teva/mifgash-1/img/s9.jpg",c:"var(--fire)",
+  text:"היסוד של כוח החיים. אש מחממת ומאירה, ומזכירה התלהבות, רצון ועניין שמתעורר. לא תמיד יש להבה גדולה; לפעמים יש רק ניצוץ, וגם גחלת קטנה שומרת חום.",
+  q:"מה מעורר בי אפילו מעט עניין או רצון?",
+  lore:[["עונה","קיץ"],["רגש","שמחה"],["איברים","הלב והמעי הדק"],["חוש","הלשון"]],
+  prac:["לחפש ניצוץ קטן אחד ביום: משהו שעורר עניין, חיוך או חום.","לשים לב לאור: שמש בחלון, שקיעה, נר.","אין צורך להכריח את הניצוץ להופיע. גם יום בלי ניצוץ הוא יום."]},
+ {id:"wood",name:"עץ",sub:"שורשים וצמיחה",img:"/teva/mifgash-1/img/s10.jpg",c:"var(--wood)",
+  text:"העץ מחבר בין מה שמתחת לקרקע לבין מה שמעליה. ענף גמיש מתכופף ברוח ולא נשבר. צמיחה יכולה להיות עשייה חדשה, ולפעמים היכולת לומר ״זה לא מתאים לי כרגע״.",
+  q:"מה מחזיק אותי, ומה הייתי רוצה לטפח בחיי?",
+  lore:[["עונה","אביב"],["רגש","כעס, ולצדו כוח לתכנן ולהתקדם"],["איברים","הכבד וכיס המרה"],["חוש","העיניים"]],
+  prac:["לבחור עץ אחד בדרך, או צמח בבית, ולהתבונן בו בימים שונים. מה משתנה?","לבחור דבר קטן אחד לטפח השבוע, ולתת לו כמה דקות.","לשאול: מה מהשורשים שלי לא רואים מבחוץ, ובכל זאת מחזיק אותי?"]},
+ {id:"metal",name:"מתכת",sub:"דיוק וגבולות",img:"/teva/mifgash-1/img/s11.jpg",c:"var(--metal)",
+  text:"מתכת חדה ומדויקת. במסורת הסינית היא הסתיו: אוספים את מה שחשוב ומניחים לעלים לנשור. בסדרה שלנו היא דימוי לדיוק ולגבולות, למה שבאמת יקר לי.",
+  q:"איזה גבול יכול לעזור לי לשמור על עצמי?",
+  lore:[["עונה","סתיו"],["רגש","עצב וצער"],["איברים","הריאות והמעי הגס"],["חוש","האף"]],
+  prac:["לשים לב לגבול אחד שעזר לי השבוע, או לגבול שהיה חסר.","לנסות משפט קטן אחד: ״חשוב לי לנוח עכשיו״ או ״אפשר לשאול אותי לפני שנותנים עצה?״","להתבונן במשהו שמשתחרר בטבע: עלה שנושר, ענף יבש, ולשאול מה אני מוכן/ה להניח."]}
+];
+function load(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+let mine=load("kmt-mine",[]);if(!Array.isArray(mine))mine=mine?[mine]:[];let view=mine[0]||"earth";
+const elsBox=document.getElementById("els"),detail=document.getElementById("detail");
+EL.forEach(e=>{const b=document.createElement("button");b.type="button";b.className="el";b.id="b-"+e.id;b.style.setProperty("--c",e.c);
+  b.innerHTML=`<img src="${e.img}" alt=""><span>${e.name}<small>${e.sub}</small></span>`;b.onclick=()=>{view=e.id;drawDetail()};elsBox.appendChild(b)});
+function drawDetail(){
+  const e=EL.find(x=>x.id===view);detail.style.setProperty("--c",e.c);
+  EL.forEach(x=>document.getElementById("b-"+x.id).setAttribute("aria-pressed",mine.includes(x.id)));
+  detail.innerHTML=`<h3>${e.name}<small>${e.sub}</small></h3><p>${e.text}</p><div class="q">${e.q}</div>
+  <details><summary>מן המסורות</summary><dl>${e.lore.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>
+  <p class="small" style="margin:0 0 10px">לפי המסורות היוונית והסינית. זהו מודל סמלי לחשיבה על הקשר בין הגוף לטבע, ולא אבחון או המלצה רפואית.</p></details>
+  <div class="row"><button class="btn${mine.includes(e.id)?" ghost":""}" type="button" id="pick">${mine.includes(e.id)?"✓ נבחר · לחיצה מבטלת":"הוספה לאלמנטים שלי"}</button><span class="small">${mine.length?"נבחרו: "+EL.filter(x=>mine.includes(x.id)).map(x=>x.name).join(", "):"עוד לא נבחר אלמנט"}</span></div>`;
+  document.getElementById("pick").onclick=()=>{mine=mine.includes(e.id)?mine.filter(x=>x!==e.id):[...mine,e.id];save("kmt-mine",mine);drawDetail();drawPrac()};
+}
+const prac=document.getElementById("prac");
+function drawPrac(){
+  if(!mine.length){prac.innerHTML='<p class="sub">אחרי שבוחרים אלמנט אחד או יותר למעלה, יופיעו כאן הזמנות קטנות לשבוע. אפשר לבחור רק אחת מהן.</p>';return}
+  const chosen=EL.filter(x=>mine.includes(x.id));
+  let h=`<p class="sub">האלמנטים שלי: ${chosen.map(e=>`<b style="color:${e.c}">${e.name}</b>`).join(", ")}. לכל אלמנט שלוש הזמנות קטנות. אפשר לבחור רק אחת מכולן, ואפשר גם לא לבחור אף אחת.</p>`;
+  chosen.forEach(e=>{h+=`<div class="pblock" style="--c:${e.c}"><h3>${e.name} <small>${e.sub}</small></h3>`+
+    e.prac.map((t,i)=>`<div class="step"><i>${i+1}</i><div>${t}</div></div>`).join("")+
+    `<div><label for="refl-${e.id}">מה עולה לי מהשאלה: ${e.q}</label><textarea id="refl-${e.id}" placeholder="מילה, משפט או ציור במילים"></textarea></div></div>`});
+  prac.innerHTML=h;
+  chosen.forEach(e=>{const r=document.getElementById("refl-"+e.id);r.value=load("kmt-refl-"+e.id,"");r.oninput=()=>save("kmt-refl-"+e.id,r.value)});
+}
+const stone=document.getElementById("stone");stone.value=load("kmt-stone","");stone.oninput=()=>save("kmt-stone",stone.value);
+let days=load("kmt-days",[]);const daysBox=document.getElementById("days");
+["א׳","ב׳","ג׳","ד׳","ה׳","ו׳","ש׳"].forEach((d,i)=>{const b=document.createElement("button");b.type="button";b.textContent=d;b.setAttribute("aria-label","יום "+d);
+  b.setAttribute("aria-pressed",days.includes(i));b.onclick=()=>{days=days.includes(i)?days.filter(x=>x!==i):[...days,i];save("kmt-days",days);b.setAttribute("aria-pressed",days.includes(i))};daysBox.appendChild(b)});
+let log=load("kmt-log",[]),logEl=null;
+const logEls=document.getElementById("logEls");
+EL.forEach(e=>{const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=e.name;b.style.setProperty("--c",e.c);b.setAttribute("aria-pressed","false");
+  b.onclick=()=>{logEl=logEl===e.id?null:e.id;[...logEls.children].forEach((c,i)=>c.setAttribute("aria-pressed",EL[i].id===logEl))};logEls.appendChild(b)});
+function drawLog(){const ul=document.getElementById("log");ul.innerHTML="";
+  log.slice().reverse().forEach(it=>{const li=document.createElement("li");const e=EL.find(x=>x.id===it.el);
+    li.innerHTML=`<div class="meta"><span>${it.d}${e?` · <b style="color:${e.c}">${e.name}</b>`:""}</span><button type="button">מחיקה</button></div><div></div>`;
+    li.lastChild.textContent=it.t;li.querySelector("button").onclick=()=>{log=log.filter(x=>x.id!==it.id);save("kmt-log",log);drawLog()};ul.appendChild(li)})}
+document.getElementById("logAdd").onclick=()=>{const t=document.getElementById("logIn"),ok=document.getElementById("logOk");
+  if(!t.value.trim()){ok.textContent="אפשר לכתוב אפילו מילה אחת.";return}
+  const d=new Date().toLocaleDateString("he-IL",{weekday:"long",day:"numeric",month:"numeric"});
+  log.push({id:Date.now(),d,t:t.value.trim(),el:logEl});save("kmt-log",log);t.value="";ok.textContent="נשמר ביומן.";drawLog()};
+drawDetail();drawPrac();drawLog();
+</script>
+</body>
+</html>
