@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ההר שבתוכי · אחרי המפגש השני</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* אותה משפחה כמו חוברת המפגש הראשון: נייר לילכי, סגול העמותה, ועכשיו גווני סלע וזהב של ההר */
+  --bg:#f7f3f6; --card:#ffffff; --text:#272229; --muted:#6c636f; --line:#e6dbe4; --accent:#6a2c9e; --sage:#5d7a52;
+  --display:"Frank Ruhl Libre","David Libre",Georgia,serif; --body:"Assistant","Segoe UI",Arial,sans-serif;
+  --layers:#b4743c; --rocks:#8b7d73; --wind:#6f8fa8; --rain:#3f88a5; --plant:#5f8a3a;
+  --protect:#c99a55; --strength:#6d9a4a; --heavy:#8a6a86; --both:#a98bd0;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a171c;--card:#241f27;--text:#efeaf1;--muted:#b2a8b6;--line:#3a323f;--accent:#c9a6ee;--sage:#a5c296;--layers:#dba06a;--rocks:#b9aca2;--wind:#a5c0d6;--rain:#74bdd6;--plant:#9cc477;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a171c;--card:#241f27;--text:#efeaf1;--muted:#b2a8b6;--line:#3a323f;--accent:#c9a6ee;--sage:#a5c296;--layers:#dba06a;--rocks:#b9aca2;--wind:#a5c0d6;--rain:#74bdd6;--plant:#9cc477;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:18px;line-height:1.65}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.25;margin:0;text-wrap:balance}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.hero{position:relative;min-height:360px;display:flex;align-items:flex-end;background:#3a2a2a url('/teva/mifgash-2/img/s2.jpg') center/cover}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(24,16,20,.9),rgba(24,16,20,.15) 70%)}
+.hero .in{position:relative;padding:28px 20px 26px;max-width:760px;margin:0 auto;width:100%;color:#f7f1e8}
+.kick{font-size:15px;font-weight:700;color:#e3cdf6}
+.hero h1{font-size:clamp(32px,8vw,48px);margin:4px 0 8px}
+.hero p{margin:0;max-width:52ch}
+nav.toc{max-width:760px;margin:-18px auto 0;padding:0 16px;position:relative}
+nav.toc div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;display:flex;flex-wrap:wrap;gap:6px}
+nav.toc a{font-size:15px;color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+main{max-width:760px;margin:0 auto;padding:18px 16px 40px;display:grid;gap:22px}
+section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;display:grid;gap:14px;scroll-margin-top:12px}
+section > h2{font-size:26px}
+.sub{color:var(--muted);margin:0}
+.small{font-size:15px;color:var(--muted)}
+ol.recap{margin:0;padding-inline-start:22px;display:grid;gap:8px}
+ol.recap b{color:var(--accent)}
+/* story */
+.story{display:grid;gap:12px}
+.story figure{margin:0;border-radius:14px;overflow:hidden;background:#000;aspect-ratio:4/3}
+.story img{width:100%;height:100%;object-fit:cover;display:block}
+.story .txt{min-height:7.5em}
+.story .txt h3{font-size:22px;margin-bottom:4px}
+.story .txt p{margin:0}
+.story .quote{font-family:var(--display);font-size:21px;color:var(--accent)}
+.snav{display:flex;align-items:center;gap:10px}
+.snav .dots{display:flex;gap:5px;flex:1;justify-content:center;flex-wrap:wrap}
+.snav .dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.snav .dots i.on{background:var(--accent)}
+/* images */
+.imgs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+@media (max-width:560px){.imgs{grid-template-columns:repeat(3,1fr)}}
+.im{position:relative;border:3px solid transparent;border-radius:14px;overflow:hidden;padding:0;background:#000;aspect-ratio:1;text-align:start}
+.im img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
+.im span{position:absolute;inset:auto 0 0 0;padding:6px 8px;background:linear-gradient(to top,rgba(0,0,0,.85),transparent);color:#fff;font-family:var(--display);font-size:17px;line-height:1.15}
+.im[aria-current="true"]{border-color:var(--c)}
+.im[aria-pressed="true"]::after{content:"✓";position:absolute;top:6px;inset-inline-end:6px;background:var(--c);color:#fff;border-radius:50%;width:24px;height:24px;display:grid;place-items:center;font-size:14px;font-weight:700}
+.detail{border-inline-start:5px solid var(--c,var(--accent));padding:4px 16px;display:grid;gap:10px}
+.detail h3{font-size:28px;color:var(--c)}
+.detail p{margin:0}
+.q{font-family:var(--display);font-size:22px;background:color-mix(in srgb,var(--c,var(--accent)) 12%,transparent);border-radius:12px;padding:12px 14px}
+/* word bank */
+.bank{display:grid;gap:14px}
+.cat h3{font-size:19px;margin-bottom:6px}
+.words{display:flex;flex-wrap:wrap;gap:6px}
+.w{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:4px 12px;font-size:16px}
+.w[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+:root[data-theme="dark"] .w[aria-pressed="true"]{color:#1a171c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .w[aria-pressed="true"]{color:#1a171c}}
+.wdesc{min-height:1.6em;font-size:16px;color:var(--muted);margin:0}
+.wdesc b{color:var(--text)}
+details{border:1px solid var(--line);border-radius:12px;padding:2px 14px}
+summary{cursor:pointer;font-weight:700;padding:8px 0;color:var(--muted)}
+/* map */
+.map{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px;align-items:start}
+@media (max-width:620px){.map{grid-template-columns:1fr}}
+#mtn{width:100%;height:auto;max-width:340px;justify-self:center}
+#mtn text{font-family:var(--body);font-weight:700;font-size:15px;fill:#231c22}
+.lrows{display:grid;gap:10px}
+.lrow{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:8px}
+.lrow .top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.lrow .top b{font-family:var(--display);font-size:20px}
+.lrow .top button{background:none;border:0;color:var(--muted);text-decoration:underline;padding:0;font-size:14px}
+.roles{display:flex;flex-wrap:wrap;gap:6px}
+.role{border:1px solid var(--line);background:transparent;border-radius:999px;padding:2px 11px;font-size:15px}
+.role[aria-pressed="true"]{background:var(--rc);border-color:var(--rc);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:14px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-inline-end:4px;vertical-align:-1px}
+label{font-weight:700;display:block;margin-bottom:4px}
+input[type=text],textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+textarea{min-height:80px;resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{background:var(--accent);color:#fff;border:0;border-radius:12px;padding:10px 18px;font-weight:700;text-decoration:none;display:inline-block}
+:root[data-theme="dark"] .btn{color:#1a171c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn{color:#1a171c}}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);font-weight:600}
+.ex{display:grid;gap:8px}
+.ex div{border-inline-start:4px solid var(--both);padding:4px 12px;background:var(--bg);border-radius:0 10px 10px 0}
+.chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:4px 12px;font-size:15px}
+.chip[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#fff}
+.step{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.step i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--c,var(--accent));color:#fff;display:grid;place-items:center;font-weight:700}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.days button{aspect-ratio:1;border-radius:12px;border:1px solid var(--line);background:var(--bg);font-weight:700;font-size:15px;display:grid;place-items:center;padding:0}
+.days button[aria-pressed="true"]{background:var(--sage);border-color:var(--sage);color:#fff}
+.log{display:grid;gap:10px;list-style:none;margin:0;padding:0}
+.log li{border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:grid;gap:4px}
+.log .meta{display:flex;justify-content:space-between;gap:8px;font-size:14px;color:var(--muted)}
+.log .meta button{background:none;border:0;color:var(--muted);text-decoration:underline;padding:0}
+.priv{background:color-mix(in srgb,var(--sage) 14%,transparent);border-radius:12px;padding:10px 14px;font-size:15px}
+.closing{text-align:center;background:transparent;border:0;justify-items:center}
+.closing img{width:min(260px,70%);height:auto}
+.closing .big{font-family:var(--display);font-size:clamp(24px,6vw,32px);line-height:1.4;margin:0}
+.disc{max-width:640px;margin:0 auto 14px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:var(--card);text-align:start;line-height:1.6}
+footer{text-align:center;font-size:14px;color:var(--muted);padding:0 16px 28px}
+@media (prefers-reduced-motion:no-preference){.story figure img{transition:opacity .35s}}
+</style>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<header class="hero">
+  <div class="in">
+    <div class="kick">מקום לרגע · ההר שבתוכי</div>
+    <h1>מה לוקחים איתנו מהמפגש השני</h1>
+    <p>סיכום קצר של המפגש, הסיפור על ההר, בנק השכבות ומפת ההר האישית שלך, וכמה הזמנות קטנות עד שניפגש שוב. הכול לבחירה ובקצב שמתאים לך.</p>
+  </div>
+</header>
+<nav class="toc" aria-label="תוכן"><div>
+  <a href="#did">מה עשינו</a><a href="#story">הסיפור</a><a href="#images">חמשת הדימויים</a><a href="#bank">בנק השכבות</a><a href="#map">מפת ההר שלי</a><a href="#week">השבוע</a><a href="#journal">יומן</a>
+</div></nav>
+
+<main>
+  <section id="did">
+    <h2>מה עשינו יחד</h2>
+    <ol class="recap">
+      <li><b>חזרנו למעגל.</b> סבב קצר של שם ומילה.</li>
+      <li><b>התבוננו בשכבות שבנוף.</b> בצוקים רואים שכבות בהירות וכהות, דקות ורחבות. השתמשנו בהן כדימוי למה שנשאר בנו מחוויות החיים.</li>
+      <li><b>שמענו את ״ההר ששמר סיפורים״.</b> סיפור על רחל, שהגיעה אל הר עתיק ופגשה בו את השכבות של עצמה.</li>
+      <li><b>עצרנו לרגע.</b> מנוחה, מחשבה והתמתחות.</li>
+      <li><b>ציירנו את מפת ההר שלי.</b> בחרנו שכבה שמזהים בתוכנו, ודימוי אחד מן ההר.</li>
+      <li><b>שיתפנו משהו מההר.</b> כל אחד ואחת בחרו מה וכמה לשתף.</li>
+      <li><b>הבטנו על ההר.</b> מה גיליתי, מה נשאר ומה משתנה בי, ולמה הייתי רוצה לתת מקום.</li>
+    </ol>
+  </section>
+
+  <section id="story">
+    <h2>ההר ששמר סיפורים</h2>
+    <p class="sub">הסיפור בקצרה. אפשר לעבור בין התמונות בכפתורים.</p>
+    <div class="story">
+      <figure><img id="stImg" src="/teva/mifgash-2/img/s3.jpg" alt=""></figure>
+      <div class="txt" aria-live="polite"><h3 id="stTitle"></h3><p id="stText"></p></div>
+      <div class="snav">
+        <button class="btn ghost" id="stPrev" type="button">→ הקודם</button>
+        <div class="dots" id="stDots"></div>
+        <button class="btn" id="stNext" type="button">הבא ←</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="images">
+    <h2>חמשת הדימויים של ההר</h2>
+    <p class="sub"><b style="color:var(--text)">לחצו על דימוי להסבר.</b> אפשר לסמן את הדימויים שמדברים אליכם, והם יופיעו במפת ההר ובהזמנות לשבוע.</p>
+    <div class="imgs" id="imgs"></div>
+    <div class="detail" id="imgDetail"></div>
+  </section>
+
+  <section id="bank">
+    <h2>בנק השכבות שלי</h2>
+    <p class="sub">יש בנו שכבות שנוצרו מתוך חום ואהבה, ויש שנבנו בזמנים מורכבים. חלקן מגינות, חלקן מחזקות, וחלקן מבקשות היום מקום אחר. אותה שכבה יכולה לעזור ברגע אחד ולהכביד ברגע אחר.</p>
+    <p class="sub"><b style="color:var(--text)">לחצו על מילה כדי לראות את פירושה ולהוסיף אותה להר שלכם.</b> מומלץ לבחור שתיים עד ארבע שכבות. אפשר לבחור גם שכבות מנוגדות.</p>
+    <p class="wdesc" id="wdesc" aria-live="polite"></p>
+    <div class="bank" id="bankBox"></div>
+    <div class="row">
+      <label for="custom" style="margin:0">שכבה במילים שלי</label>
+      <input type="text" id="custom" maxlength="24" placeholder="למשל: הומור" style="flex:1;min-width:150px">
+      <button class="btn ghost" id="addCustom" type="button">הוספה</button>
+    </div>
+  </section>
+
+  <section id="map">
+    <h2>מפת ההר שלי היום</h2>
+    <p class="sub">השכבות שבחרתם נבנות כאן מלמטה למעלה. ליד כל שכבה אפשר לסמן מה היא עושה בשבילכם היום.</p>
+    <div class="map">
+      <svg id="mtn" viewBox="0 0 320 400" role="img" aria-label="מפת ההר שלי"></svg>
+      <div class="lrows" id="lrows"></div>
+    </div>
+    <div class="legend"><span><i style="background:var(--protect)"></i>מגינה</span><span><i style="background:var(--strength)"></i>מחזקת</span><span><i style="background:var(--heavy)"></i>מכבידה</span><span><i style="background:var(--both)"></i>גם וגם</span></div>
+    <p class="small" style="margin:0">אין צורך לדעת מאין הגיעה כל שכבה, ואין צורך לשתף בסיפור שמאחוריה.</p>
+    <div class="row">
+      <button class="btn" id="copyMtn" type="button">העתקת ההר שלי</button>
+      <a class="btn ghost" href="/teva/mifgash-2/img/mountain-sheet.png" target="_blank" rel="noopener">דף ההר לציור ולהדפסה</a>
+      <span class="small" id="copyOk"></span>
+    </div>
+  </section>
+
+  <section id="left">
+    <h2>חוויה והשכבה שנשארה</h2>
+    <div class="ex">
+      <div>צחקו כששיתפתי, ונשארה בי <b>זהירות</b>.</div>
+      <div>הקשיבו לי, ונשארה בי תחושה <b>שיש מקום לקול שלי</b>.</div>
+    </div>
+    <p class="sub">כמו רחל, אפשר לגלות ששתי שכבות שונות חיות זו לצד זו, ואין צורך לבחור איזו מהן ״האמיתית״.</p>
+    <div>
+      <label for="leftIn">איך מה שנשאר בי מופיע היום?</label>
+      <textarea id="leftIn" placeholder="מילה, משפט או תמונה במילים"></textarea>
+    </div>
+  </section>
+
+  <section id="week">
+    <h2>עד המפגש הבא</h2>
+    <div class="q" style="--c:var(--accent)">לאיזה חלק בהר אני רוצה לתת מקום השבוע?</div>
+    <p class="sub">לבחור דימוי אחד או יותר, ויופיעו הזמנות קטנות. אפשר לבחור רק אחת מהן, ואפשר גם לא לבחור אף אחת.</p>
+    <div class="row" id="weekChips"></div>
+    <div id="weekPrac" style="display:grid;gap:14px"></div>
+    <div>
+      <label>רגעים קטנים שהתאפשרו השבוע</label>
+      <p class="small" style="margin:0 0 8px">לסמן יום שבו היה רגע של התבוננות. גם יום בלי סימון הוא חלק מהדרך.</p>
+      <div class="days" id="days"></div>
+    </div>
+  </section>
+
+  <section id="journal">
+    <h2>יומן ההר</h2>
+    <p class="sub">שכבה שהופיעה, רוח שהזיזה משהו, צמח קטן שצמח. מה ראיתי, ומה זה עורר בי?</p>
+    <div><label for="logIn">רגע שרציתי לזכור</label>
+      <textarea id="logIn" placeholder="לדוגמה: שמתי לב שהזהירות הופיעה בשיחה, ולצידה גם הרצון להתקרב."></textarea></div>
+    <div class="row" id="logChips" aria-label="דימוי קשור (לבחירה)"></div>
+    <div class="row"><button class="btn" id="logAdd" type="button">שמירה ביומן</button><span class="small" id="logOk"></span></div>
+    <ul class="log" id="log"></ul>
+    <div class="priv">מה שנכתב בדף הזה נשמר רק בטלפון או במחשב שבו כתבת, ולא נשלח לאף אחד. אין צורך להביא תשובות למפגש.</div>
+  </section>
+
+  <section class="closing">
+    <img src="/teva/mifgash-2/img/rachel.webp" alt="רחל יושבת ליד ההר וידה על הסלע">
+    <p class="big">גם בי יש שכבות.<br>לא כולן קלות,<br>אבל כולן חלק מהנוף שלי.</p>
+  </section>
+</main>
+<footer><p class="disc">התוכן נועד להתבוננות אישית ולהשראה בלבד. הוא אינו מהווה ייעוץ, אבחון או טיפול רפואי, ואינו מחליף מידע רפואי או התייעצות עם רופא/ה או איש/אשת מקצוע בתחום הבריאות. בכל שאלה הנוגעת לבריאות יש לפנות לגורם רפואי מוסמך.</p>© כל הזכויות שמורות לעמותת גוונים של סגול, 2026</footer>
+
+<script>
+function load(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+/* story */
+const ST=[
+ {img:"s3",t:"הר עתיק בקצה השביל",p:"בשעות אחר הצהריים נצבעו מדרונותיו בזהב, ובסלע נגלו שכבות בהירות וכהות. ממרחק נראה הר רגיל. מקרוב אפשר היה לראות שהוא נושא בתוכו סיפורים רבים."},
+ {img:"s4",t:"רחל מגיעה",p:"בתקופה האחרונה כל דבר קטן נגע בה עמוק. לפעמים רצתה להתקרב לאנשים, ולפעמים להתרחק.",q:"״איך אני יכולה להתמודד עם הכול?״"},
+ {img:"s6",t:"מה יש בשכבות",p:"עקבות של זמנים שונים, דברים שהצטברו ודברים שהשתנו.",q:"״אף שכבה לבדה אינה כל ההר.״"},
+ {img:"s7",t:"הזהירות שנשארה",p:"פעם שיתפה משהו חשוב, וצחקו. שנים אחר כך היא עדיין עוצרת ובודקת לפני שהיא אומרת משהו אישי.",q:"״האירוע ההוא הסתיים, אבל הזהירות נשארה איתך.״"},
+ {img:"s9",t:"המטבח של סבתא",p:"סבתא הקשיבה לה בלי לשפוט. מהזמן ההוא נשארה הידיעה ששיחה יכולה להיות מקום נעים, והרצון שמישהו יכיר אותה באמת."},
+ {img:"s10",t:"שתיהן כאן",p:"השמש זזה, ופס בהיר שהיה בצל התגלה. הזהירות, וגם הרצון להתקרב. לא הייתה צריכה לבחור איזו מהן האמיתית; שתיהן צמחו ממה שחוותה."},
+ {img:"s12",t:"סלעים שנפרדו",p:"לפעמים סלע מתרופף ונפרד, נשאר מקום שהיה מלא, והנוף משתנה.",q:"״לא כל פרידה מרגישה כמו הקלה. אפשר לתת מקום גם למה שחסר.״"},
+ {img:"s13",t:"הרוח",p:"הרוח פוגשת את ההר שוב ושוב. לפעמים היא מסירה כיסוי, ולפעמים היא שוחקת. מה עדיין נע בתוכי, ומה נעשה ברור יותר כשהרעש שוכך?"},
+ {img:"s14",t:"הגשם והחריצים",p:"הגשם של היום עובר בדרכים שמים רבים עברו בהן לפניו. יש דברים שחזרו בחיים והשאירו סימן.",q:"״אפשר לראות את הסימן, גם בלי לחפש עכשיו מה טוב בו.״"},
+ {img:"s15",t:"צמח בין הסלעים",p:"שורשים מוצאים דרך בעומק, והצמח צומח אל האור. כדי לתת מקום לקשר שמזין ולרצון קטן שמתעורר, אין צורך לשנות את כל ההר."},
+ {img:"s16",t:"ממשיכה ללכת",p:"הזהירות הלכה איתה, וגם זיכרון המטבח של סבתא. ולצידן מחשבה חדשה:",q:"״יש בי שכבות שנשארו, דברים שמשתנים, ומקום גם למה שעדיין צומח.״"}
+];
+let si=0;const stDots=document.getElementById("stDots");
+ST.forEach((s,i)=>{const d=document.createElement("i");stDots.appendChild(d)});
+function drawStory(){const s=ST[si];document.getElementById("stImg").src="/teva/mifgash-2/img/"+s.img+".jpg";
+  document.getElementById("stTitle").textContent=s.t;
+  const p=document.getElementById("stText");p.textContent=s.p;
+  if(s.q){const q=document.createElement("span");q.className="quote";q.style.display="block";q.style.marginTop="6px";q.textContent=s.q;p.appendChild(q)}
+  [...stDots.children].forEach((d,i)=>d.classList.toggle("on",i===si));
+  document.getElementById("stPrev").disabled=si===0;
+  document.getElementById("stNext").textContent=si===ST.length-1?"מההתחלה ←":"הבא ←";}
+document.getElementById("stPrev").onclick=()=>{if(si>0){si--;drawStory()}};
+document.getElementById("stNext").onclick=()=>{si=si===ST.length-1?0:si+1;drawStory()};
+ST.forEach(s=>{const im=new Image();im.src="/teva/mifgash-2/img/"+s.img+".jpg"});
+
+/* five images */
+const IM=[
+ {id:"layers",name:"שכבות",img:"s21",c:"var(--layers)",q:"מה נבנה ונשאר בי?",text:"השכבות הן מה שהצטבר לאורך הדרך: מתוך חום ואהבה, ומתוך זמנים מורכבים. אף שכבה לבדה אינה כל ההר.",prac:["לשים לב לשכבה אחת שמופיעה השבוע, בלי לשפוט אותה.","לשאול לידה: האם היא מגינה, מחזקת, מכבידה, או גם וגם?"]},
+ {id:"rocks",name:"סלעים",img:"s12",c:"var(--rocks)",q:"מה התרופף או נפרד ממני?",text:"סלע שנפרד משאיר מקום שהיה מלא, והנוף משתנה. האבנים יכולות לסמל הקלה, וגם חסר וגעגוע.",prac:["לתת רגע של מקום למשהו שהשתנה או חסר.","אפשר לכתוב לו מילה אחת ביומן, בלי לחפש בו משהו טוב."]},
+ {id:"wind",name:"רוח",img:"s13",c:"var(--wind)",q:"מה פוגש ומזיז אותי?",text:"הרוח חוזרת שוב ושוב. לפעמים היא מסירה כיסוי ומגלה משהו בהיר, ולפעמים היא שוחקת. כמו מילים וציפיות שפגשנו בדרך.",prac:["לשים לב למילה או לציפייה שהזיזה בי משהו השבוע.","לשאול: מה נעשה ברור יותר כשהרעש שוכך?"]},
+ {id:"rain",name:"גשם וחריצים",img:"s14",c:"var(--rain)",q:"מה השאיר בי סימן?",text:"מים זורמים בחריצים שמים רבים עברו בהם לפניהם. יש דברים שחזרו בחיים והשאירו סימן. אפשר לראות אותו כמו שהוא.",prac:["לזהות סימן אחד שחוזר, ולתת לו להיות בלי לתקן.","לשים לב מתי הוא מופיע, ומה עוזר באותו רגע."]},
+ {id:"plant",name:"צמחים ושורשים",img:"s15",c:"var(--plant)",q:"מה צומח בי, ומה מזין אותי?",text:"צמח קטן בין הסלעים: השורשים מוצאים דרך בעומק, והצמח צומח אל האור. אין צורך לשנות את כל ההר כדי לתת מקום לצמיחה.",prac:["לבחור דבר קטן אחד שמזין, ולתת לו כמה דקות.","לשים לב לרצון קטן שמתעורר, גם אם הוא עוד שקט."]}
+];
+let imSel=load("kmt2-img",[]),imView=imSel[0]||"layers";
+const imgsBox=document.getElementById("imgs"),imgDetail=document.getElementById("imgDetail");
+IM.forEach(e=>{const b=document.createElement("button");b.type="button";b.className="im";b.id="im-"+e.id;b.style.setProperty("--c",e.c);
+  b.innerHTML=`<img src="/teva/mifgash-2/img/${e.img}.jpg" alt=""><span>${e.name}</span>`;b.onclick=()=>{imView=e.id;drawImgs()};imgsBox.appendChild(b)});
+function drawImgs(){
+  const e=IM.find(x=>x.id===imView);imgDetail.style.setProperty("--c",e.c);
+  IM.forEach(x=>{const b=document.getElementById("im-"+x.id);b.setAttribute("aria-pressed",imSel.includes(x.id));b.setAttribute("aria-current",x.id===imView)});
+  const on=imSel.includes(e.id);
+  imgDetail.innerHTML=`<h3>${e.name}</h3><p>${e.text}</p><div class="q">${e.q}</div>
+  <div class="row"><button class="btn${on?" ghost":""}" type="button" id="imPick">${on?"✓ סומן · לחיצה מבטלת":"זה מדבר אליי"}</button><span class="small">${imSel.length?"סומנו: "+IM.filter(x=>imSel.includes(x.id)).map(x=>x.name).join(", "):"עוד לא סומן דימוי"}</span></div>`;
+  document.getElementById("imPick").onclick=()=>{imSel=on?imSel.filter(x=>x!==e.id):[...imSel,e.id];save("kmt2-img",imSel);drawImgs();drawMap();drawWeek()};
+}
+
+/* word bank */
+const BANK=[
+ ["קשר ושייכות",[["שייכות","התחושה שיש לי מקום."],["אמון","האפשרות להישען על עוד מישהו."],["אהבה","החום שנשאר בי מקשרים משמעותיים."],["נראות","הידיעה שרואים אותי באמת."],["בדידות","התחושה של לשאת דברים לבד."],["געגוע","קשר למשהו או למישהו שחסר לי."]]],
+ ["הגנה",[["זהירות","בדיקה לפני שנפתחים."],["דריכות","תשומת לב מתמדת למה שקורה סביבי."],["שתיקה","לשמור דברים בפנים."],["ריצוי","להתאים את עצמי כדי לשמור על הקשר."],["שליטה","הידיעה מה עומד לקרות נותנת ביטחון."],["עצמאות","ללמוד לסמוך קודם כול על עצמי."],["גבולות","לזהות מה מתאים לי ומה כבר מכביד."]]],
+ ["הקול שלי",[["ביטחון","אמון במה שיש לי להביא."],["ספק","בדיקה חוזרת של מה שמרגישים ויודעים."],["ביקורת עצמית","הקול שממהר למצוא מה לא מספיק טוב."],["השוואה","למדוד את עצמי דרך אחרים."],["הקטנת עצמי","לצמצם את המקום שלי."],["חופש ביטוי","המילים שלי מוצאות דרך החוצה."],["נאמנות לעצמי","להקשיב למה שנכון עבורי."]]],
+ ["רגש וזיכרון",[["רגישות","דברים נוגעים בי עמוק."],["עצב","משהו בתוכי עדיין כואב."],["כעס","קול בתוכי שמבקש שיקשיבו לו."],["בושה","החשש שיראו בי משהו שאני מנסה להסתיר."],["אכזבה","זיכרון של דבר שקיוויתי לו ולא התממש."],["שמחה","היכולת להתרגש וליהנות."],["הכרת תודה","תשומת לב למה שמזין ומחמם אותי."]]],
+ ["כוח ותנועה",[["אומץ","היכולת לעשות צעד גם כשיש חשש."],["התמדה","לחזור ולנסות לאורך הדרך."],["גמישות","למצוא דרכים נוספות."],["אחריות","נטייה לקחת דברים על עצמי."],["סקרנות","רצון לגלות ולהכיר."],["יצירתיות","למצוא ביטוי ופתרונות בדרך שלי."],["תקווה","משהו בי עדיין רואה אפשרות."]]],
+ ["הקשבה ורכות",[["הקשבה לגוף","לשים לב למה שהגוף מספר לי."],["סבלנות","לתת לדברים זמן."],["חמלה","לפגוש את הקושי ברכות."],["קבלה","לראות את מה שיש בי עכשיו."],["מנוחה","ללמוד לזהות מתי לעצור."],["פתיחות לקבל עזרה","לתת לעוד מישהו לעזור לשאת."],["אמון בקצב שלי","לגלות את הדרך שמתאימה לי."]]]
+];
+const DESC={};BANK.forEach(([,ws])=>ws.forEach(([w,d])=>DESC[w]=d));
+let layers=load("kmt2-layers",[]); // [{w,role,note}]
+const bankBox=document.getElementById("bankBox"),wdesc=document.getElementById("wdesc");
+wdesc.textContent="לחיצה על מילה תציג כאן את הפירוש שלה.";
+BANK.forEach(([cat,ws])=>{const d=document.createElement("div");d.className="cat";d.innerHTML=`<h3>שכבות של ${cat}</h3>`;
+  const box=document.createElement("div");box.className="words";
+  ws.forEach(([w])=>{const b=document.createElement("button");b.type="button";b.className="w";b.textContent=w;b.dataset.w=w;
+    b.onclick=()=>toggleLayer(w);box.appendChild(b)});d.appendChild(box);bankBox.appendChild(d)});
+function toggleLayer(w){
+  const has=layers.some(l=>l.w===w);
+  if(has){layers=layers.filter(l=>l.w!==w);wdesc.innerHTML=`<b>${esc(w)}</b> הוסרה מההר.`}
+  else{if(layers.length>=6){wdesc.textContent="בהר יש מקום לשש שכבות. אפשר להסיר שכבה כדי להוסיף אחרת.";return}
+    layers.push({w,role:"",note:""});wdesc.innerHTML=`<b>${esc(w)}</b>: ${esc(DESC[w]||"שכבה במילים שלי.")} נוספה להר.`}
+  save("kmt2-layers",layers);drawBank();drawMap();
+}
+function drawBank(){bankBox.querySelectorAll(".w").forEach(b=>b.setAttribute("aria-pressed",layers.some(l=>l.w===b.dataset.w)))}
+document.getElementById("addCustom").onclick=()=>{const i=document.getElementById("custom");const v=i.value.trim();if(!v)return;
+  if(!layers.some(l=>l.w===v))toggleLayer(v);i.value=""};
+
+/* mountain map */
+const ROLES=[["protect","מגינה","var(--protect)"],["strength","מחזקת","var(--strength)"],["heavy","מכבידה","var(--heavy)"],["both","גם וגם","var(--both)"]];
+const RC=Object.fromEntries(ROLES.map(r=>[r[0],r]));
+function drawMap(){
+  const svg=document.getElementById("mtn");const N=6,top=40,bot=380,cx=160;
+  let h=`<defs><clipPath id="mclip"><path d="M${cx-22},${top+8} Q${cx},${top-6} ${cx+22},${top+8} L304,${bot} Q160,${bot+14} 16,${bot} Z"/></clipPath></defs>`;
+  h+=`<g clip-path="url(#mclip)">`;
+  const bh=(bot-top)/N;
+  for(let k=0;k<N;k++){
+    const y1=bot-(k+1)*bh,y2=bot-k*bh,L=layers[k];
+    const col=L?(L.role?RC[L.role][2]:"var(--layers)"):"transparent";
+    const op=L?(L.role?0.9:0.45):0;
+    h+=`<path d="M0,${y2} Q80,${y2-8} 160,${y2} T320,${y2} L320,${y1} Q240,${y1+8} 160,${y1} T0,${y1} Z" style="fill:${col};opacity:${op}"/>`;
+  }
+  h+=`</g><path d="M${cx-22},${top+8} Q${cx},${top-6} ${cx+22},${top+8} L304,${bot} Q160,${bot+14} 16,${bot} Z" style="fill:none;stroke:var(--text);stroke-width:2.5"/>`;
+  for(let k=1;k<N;k++){const y=bot-k*bh;h+=`<path d="M0,${y} Q80,${y-8} 160,${y} T320,${y}" clip-path="url(#mclip)" style="fill:none;stroke:var(--text);stroke-width:1.6;opacity:.7"/>`}
+  for(let k=0;k<N;k++){const L=layers[k];if(!L)continue;const y=bot-(k+.5)*bh+5;const fs=k>=4?13:15;
+    h+=`<text x="${cx}" y="${y}" text-anchor="middle" style="font-size:${fs}px">${esc(L.w)}</text>`}
+  const chosen=IM.filter(x=>imSel.includes(x.id)).map(x=>x.name);
+  if(chosen.length)h+=`<text x="${cx}" y="22" text-anchor="middle" style="fill:var(--accent);font-size:14px">${esc(chosen.join(" · "))}</text>`;
+  if(!layers.length)h+=`<text x="${cx}" y="${bot-40}" text-anchor="middle" style="fill:var(--muted);font-weight:600">השכבות שתבחרו יופיעו כאן</text>`;
+  svg.innerHTML=h;
+  const lr=document.getElementById("lrows");lr.innerHTML="";
+  if(!layers.length){lr.innerHTML='<p class="sub">עוד לא נבחרו שכבות. אפשר לבחור מילים בבנק השכבות למעלה.</p>';return}
+  layers.slice().reverse().forEach(L=>{
+    const d=document.createElement("div");d.className="lrow";
+    d.innerHTML=`<div class="top"><b>${esc(L.w)}</b><button type="button">הסרה</button></div>
+    <div class="roles">${ROLES.map(([id,n,c])=>`<button type="button" class="role" data-r="${id}" style="--rc:${c}" aria-pressed="${L.role===id}">${n}</button>`).join("")}</div>
+    <textarea placeholder="איך השכבה הזאת מופיעה בחיי היום? (לא חובה)"></textarea>`;
+    d.querySelector(".top button").onclick=()=>toggleLayer(L.w);
+    d.querySelectorAll(".role").forEach(b=>b.onclick=()=>{L.role=L.role===b.dataset.r?"":b.dataset.r;save("kmt2-layers",layers);drawMap()});
+    const ta=d.querySelector("textarea");ta.value=L.note||"";ta.oninput=()=>{L.note=ta.value;save("kmt2-layers",layers)};
+    lr.appendChild(d)});
+}
+document.getElementById("copyMtn").onclick=async()=>{const ok=document.getElementById("copyOk");
+  let t="ההר שלי · מקום לרגע\n";
+  if(layers.length)t+="\nהשכבות שלי:\n"+layers.map(l=>`• ${l.w}${l.role?" ("+RC[l.role][1]+")":""}${l.note?": "+l.note:""}`).join("\n")+"\n";
+  const ch=IM.filter(x=>imSel.includes(x.id));if(ch.length)t+="\nהדימויים שלי: "+ch.map(x=>x.name).join(", ")+"\n";
+  const lf=load("kmt2-left","");if(lf)t+="\nמה שנשאר בי היום: "+lf+"\n";
+  t+="\nגם בי יש שכבות. לא כולן קלות, אבל כולן חלק מהנוף שלי.";
+  try{await navigator.clipboard.writeText(t);ok.textContent="הועתק. אפשר להדביק בפתקים בטלפון."}catch(e){ok.textContent="ההעתקה לא התאפשרה בדפדפן הזה."}};
+
+/* what remained */
+const leftIn=document.getElementById("leftIn");leftIn.value=load("kmt2-left","");leftIn.oninput=()=>save("kmt2-left",leftIn.value);
+
+/* week */
+let wk=load("kmt2-week",[]);
+const weekChips=document.getElementById("weekChips");
+IM.forEach(e=>{const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=e.name;b.style.setProperty("--c",e.c);
+  b.onclick=()=>{wk=wk.includes(e.id)?wk.filter(x=>x!==e.id):[...wk,e.id];save("kmt2-week",wk);drawWeek()};weekChips.appendChild(b)});
+function drawWeek(){
+  [...weekChips.children].forEach((b,i)=>b.setAttribute("aria-pressed",wk.includes(IM[i].id)));
+  const box=document.getElementById("weekPrac");box.innerHTML="";
+  const list=IM.filter(x=>wk.includes(x.id));
+  if(!list.length){box.innerHTML=`<p class="small" style="margin:0">${imSel.length?"אפשר להתחיל מהדימויים שסימנת: "+IM.filter(x=>imSel.includes(x.id)).map(x=>x.name).join(", ")+".":"עוד לא נבחר דימוי לשבוע."}</p>`;return}
+  list.forEach(e=>{const d=document.createElement("div");d.style.cssText=`display:grid;gap:8px;border-inline-start:4px solid ${e.c};padding-inline-start:12px;--c:${e.c}`;
+    d.innerHTML=`<h3 style="font-size:22px;color:${e.c}">${e.name}</h3>`+e.prac.map((t,i)=>`<div class="step"><i>${i+1}</i><div>${t}</div></div>`).join("");box.appendChild(d)});
+}
+let days=load("kmt2-days",[]);const daysBox=document.getElementById("days");
+["א׳","ב׳","ג׳","ד׳","ה׳","ו׳","ש׳"].forEach((d,i)=>{const b=document.createElement("button");b.type="button";b.textContent=d;b.setAttribute("aria-label","יום "+d);
+  b.setAttribute("aria-pressed",days.includes(i));b.onclick=()=>{days=days.includes(i)?days.filter(x=>x!==i):[...days,i];save("kmt2-days",days);b.setAttribute("aria-pressed",days.includes(i))};daysBox.appendChild(b)});
+
+/* journal */
+let log=load("kmt2-log",[]),logEl=null;const logChips=document.getElementById("logChips");
+IM.forEach(e=>{const b=document.createElement("button");b.type="button";b.className="chip";b.textContent=e.name;b.style.setProperty("--c",e.c);b.setAttribute("aria-pressed","false");
+  b.onclick=()=>{logEl=logEl===e.id?null:e.id;[...logChips.children].forEach((c,i)=>c.setAttribute("aria-pressed",IM[i].id===logEl))};logChips.appendChild(b)});
+function drawLog(){const ul=document.getElementById("log");ul.innerHTML="";
+  log.slice().reverse().forEach(it=>{const li=document.createElement("li");const e=IM.find(x=>x.id===it.el);
+    li.innerHTML=`<div class="meta"><span>${esc(it.d)}${e?` · <b style="color:${e.c}">${e.name}</b>`:""}</span><button type="button">מחיקה</button></div><div></div>`;
+    li.lastChild.textContent=it.t;li.querySelector("button").onclick=()=>{log=log.filter(x=>x.id!==it.id);save("kmt2-log",log);drawLog()};ul.appendChild(li)})}
+document.getElementById("logAdd").onclick=()=>{const t=document.getElementById("logIn"),ok=document.getElementById("logOk");
+  if(!t.value.trim()){ok.textContent="אפשר לכתוב אפילו מילה אחת.";return}
+  const d=new Date().toLocaleDateString("he-IL",{weekday:"long",day:"numeric",month:"numeric"});
+  log.push({id:Date.now(),d,t:t.value.trim(),el:logEl});save("kmt2-log",log);t.value="";ok.textContent="נשמר ביומן.";drawLog()};
+
+drawStory();drawImgs();drawBank();drawMap();drawWeek();drawLog();
+</script>
+</body>
+</html>
